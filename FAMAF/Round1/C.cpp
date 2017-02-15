@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define sc( x ) scanf( "%d" , &x )
+#define REP( i , n ) for( int i = 0 ; i < n ; i++ )
+#define clr( t , val ) memset( t , val , sizeof(t) )
+
+#define all(v)  v.begin() , v.end()
+#define pb push_back
+#define SZ( v ) ((int)(v).size())
+
+#define mp make_pair
+#define fi first
+#define se second
+
+#define test() cerr << "hola que hace ?" << endl;
+#define DEBUG( x ) cerr <<  #x << "=" << x << endl;
+#define DEBUG2( x , y ) cerr << #x << "=" << x << " " << #y << "=" << y << endl;
+
+typedef long long ll;
+typedef pair< int , int > pii;
+typedef vector< int > vi;
+
+int main(){
+	int n;
+	while( sc( n ) == 1 ){
+		vi v;
+		REP( i , n ){
+			int x;
+			sc( x );
+			x = (x & 1);
+			if( x == 0 ) v.pb( i );
+		}
+		ll ans = 0;
+		REP( i , n ){
+			int pos = lower_bound( all( v ) , i ) - v.begin();
+			if( pos == SZ(v) ) continue;
+			ans += (ll)(n - 1 - v[ pos ] + 1);
+		}
+		cout << ans << '\n';
+	}
+}
