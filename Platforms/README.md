@@ -1,13 +1,23 @@
-# Contests
+# Competitive Programming
 
-- Codeforces
+This repository contains solutions to various competitive programming problems and contests, primarily focused on **Codeforces**.
 
+## 🏆 Contests
 
-# Template
+* **Codeforces**
 
-´´´cpp
-#include<cstdio>
+---
 
-#define REP(i, n) for(int i = 0; i < n; i++)
+## 🛠️ Template
 
-´´´
+My standard boilerplate for fast I/O and common loops.
+
+```cpp
+#include <cstdio>
+
+#define sc(x) scanf("%d", &x)
+#define REP(i, n) for(int i = 0; i < (int)(n); i++)
+
+int main() {
+}
+```
