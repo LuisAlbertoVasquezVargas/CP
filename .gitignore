@@ -1,0 +1,2 @@
+# Ignore a.out binaries at any depth (only linux)
+**/a.out
