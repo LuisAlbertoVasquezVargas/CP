@@ -11,6 +11,18 @@
 
 #define REP(i, n) for(int i = 0; i < (int)(n); i++)
 
+#ifdef LOCAL
+    #define db1(x) fprintf(stderr, "[D] %s=%d\n", #x, x)
+    #define db2(x, y) fprintf(stderr, "[D] %s=%d | %s=%d\n", #x, x, #y, y)
+    #define db3(x, y, z) fprintf(stderr, "[D] %s=%d | %s=%d | %s=%d\n", #x, x, #y, y, #z, z)
+    #define db4(x, y, z, w) fprintf(stderr, "[D] %s=%d | %s=%d | %s=%d | %s=%d\n", #x, x, #y, y, #z, z, #w, w)
+
+    #define GET_DB(_1, _2, _3, _4, NAME, ...) NAME
+    #define debug(...) GET_DB(__VA_ARGS__, db4, db3, db2, db1)(__VA_ARGS__)
+#else
+    #define debug(...)
+#endif
+
 const int MAX_N = (1 << 18);
 const int INF = (1 << 30);
 int n, m, k;
@@ -90,6 +102,7 @@ int main() {
         int cur = 0;
         eatUp[cur] = eatDown[cur] = 0;
         REP(i, k) {
+            debug(cur);
             if (instr[i] == 'R') {
                 cur ++;
             } else {
