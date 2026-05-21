@@ -34,6 +34,39 @@ This template intentionally follows a **C-style approach** inside C++:
 
 #define REP(i, n) for(int i = 0; i < (int)(n); i++)
 
-int main() {
+#ifdef LOCAL
+    #define db1(x) fprintf(stderr, "[D] %s=%d\n", #x, x)
+    #define db2(x, y) fprintf(stderr, "[D] %s=%d | %s=%d\n", #x, x, #y, y)
+    #define db3(x, y, z) fprintf(stderr, "[D] %s=%d | %s=%d | %s=%d\n", #x, x, #y, y, #z, z)
+    #define db4(x, y, z, w) fprintf(stderr, "[D] %s=%d | %s=%d | %s=%d | %s=%d\n", #x, x, #y, y, #z, z, #w, w)
 
+    #define GET_DB(_1, _2, _3, _4, NAME, ...) NAME
+    #define debug(...) GET_DB(__VA_ARGS__, db4, db3, db2, db1)(__VA_ARGS__)
+#else
+    #define debug(...)
+#endif
+
+int main() {
+    int tc;
+    REP(t, tc) {
+
+    }
 }
+````
+
+---
+
+## ⚙️ Compilation
+
+Compile with debug output enabled:
+
+```bash
+g++ -std=c++98 -DLOCAL main.cpp
+```
+
+The `-DLOCAL` flag defines the `LOCAL` macro, enabling:
+
+```cpp
+debug(...)
+```
+
