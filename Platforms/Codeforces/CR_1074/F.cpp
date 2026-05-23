@@ -2,7 +2,7 @@
 #include <vector> // vector
 #include <cassert> // assert
 
-// TODO(lvasquez): add SZ, ALL macros, decide vInt vs vi vll etc
+// TODO(lvasquez): add PB for push_back decide vInt vs vi vll etc
 //  - add coding standards like space between REP_() or REP()
 //  - add coding standards like camelcase or underscorecase
 
@@ -13,6 +13,9 @@
 #define GET_SC(_1, _2, _3, _4, NAME, ...) NAME
 #define sc(...) GET_SC(__VA_ARGS__, sc4, sc3, sc2, sc1)(__VA_ARGS__)
 
+#define SZ(x) ((int)(x).size())
+#define ALL(x) (x).begin(), (x).end()
+#define PB push_back
 #define REP(i, n) for(int i = 0; i < (int)(n); i++)
 
 #ifdef LOCAL
@@ -25,20 +28,17 @@
 #else
     #define debug(...)
 #endif
-
 const int MAX_ND = (1 << 19);
 int n, N;
 int a[MAX_ND];
 std::vector<int> stacks[MAX_ND];
 std::vector<int> concat2(const std::vector<int> &a, const std::vector<int> &b) {
-    int a_len = (int)a.size();
-    int b_len = (int)b.size();
     std::vector<int> ans;
-    REP(i, a_len) {
-        ans.push_back(a[i]);
+    REP(i, SZ(a)) {
+        ans.PB(a[i]);
     }
-    REP(i, b_len) {
-        ans.push_back(b[i]);
+    REP(i, SZ(b)) {
+        ans.PB(b[i]);
     }
     return ans;
 }

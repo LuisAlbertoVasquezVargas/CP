@@ -33,6 +33,7 @@ This template intentionally follows a **C-style approach** inside C++:
 
 #define SZ(x) ((int)(x).size())
 #define ALL(x) (x).begin(), (x).end()
+#define PB push_back
 #define REP(i, n) for(int i = 0; i < (int)(n); i++)
 
 #ifdef LOCAL
