@@ -2,9 +2,12 @@
 #include <vector> // vector
 #include <cassert> // assert
 
-// TODO(lvasquez): add PB for push_back decide vInt vs vi vll etc
-//  - add coding standards like space between REP_() or REP()
+// TODO(lvasquez): now extend for vector<long long> if u see fit
+//  - add coding standard mentioning REP_(...) where _ = "empty"
+//  - but for simple structures if_() the _ = "space"
 //  - add coding standards like camelcase or underscorecase
+
+typedef std::vector<int> VI;
 
 #define sc1(x) scanf("%d", &(x))
 #define sc2(x, y) scanf("%d%d", &(x), &(y))
@@ -28,12 +31,18 @@
 #else
     #define debug(...)
 #endif
+
+#define sc1(x) scanf("%d", &(x))
+#define sc2(x, y) scanf("%d%d", &(x), &(y))
+#define sc3(x, y, z) scanf("%d%d%d", &(x), &(y), &(z))
+#define sc4(x, y, z, w) scanf("%d%d%d%d", &(x), &(y), &(z), &(w))
+
 const int MAX_ND = (1 << 19);
 int n, N;
 int a[MAX_ND];
-std::vector<int> stacks[MAX_ND];
-std::vector<int> concat2(const std::vector<int> &a, const std::vector<int> &b) {
-    std::vector<int> ans;
+VI stacks[MAX_ND];
+VI concat2(const VI &a, const VI &b) {
+    VI ans;
     REP(i, SZ(a)) {
         ans.PB(a[i]);
     }
@@ -43,20 +52,20 @@ std::vector<int> concat2(const std::vector<int> &a, const std::vector<int> &b) {
     return ans;
 }
 
-std::vector<int> concat3(const std::vector<int> &a, const std::vector<int> &b, const std::vector<int> &c) {
+VI concat3(const VI &a, const VI &b, const VI &c) {
     return concat2(concat2(a, b), c);
 }
 
-std::vector<int> join(std::vector<int> stack_left, std::vector<int> stack_right) {
+VI join(VI stack_left, VI stack_right) {
     int xor_left = stack_left.back();
     stack_left.pop_back();
     int xor_right = stack_right.back();
     stack_right.pop_back();
     int xor_res = xor_left ^ xor_right;
     if (xor_left >= xor_right) {
-        return concat3(stack_right, stack_left, std::vector<int>(1, xor_res));
+        return concat3(stack_right, stack_left, VI(1, xor_res));
     }
-    return concat3(stack_left, stack_right, std::vector<int>(1, xor_res));
+    return concat3(stack_left, stack_right, VI(1, xor_res));
 }
 
 void build(int node, int aa, int bb) {
@@ -72,7 +81,7 @@ void build(int node, int aa, int bb) {
     stacks[node] = join(stacks[lnode], stacks[rnode]);
 }
 
-std::vector<int> query(int node, int aa, int bb, int pos, int val) {
+VI query(int node, int aa, int bb, int pos, int val) {
     if (pos < aa || bb < pos) {
         return stacks[node];
     }
@@ -82,8 +91,8 @@ std::vector<int> query(int node, int aa, int bb, int pos, int val) {
     int mid = (aa + bb) / 2;
     int lnode = node * 2 + 1;
     int rnode = node * 2 + 2;
-    std::vector<int> left = query(lnode, aa, mid, pos, val);
-    std::vector<int> right = query(rnode, mid + 1, bb, pos, val);
+    VI left = query(lnode, aa, mid, pos, val);
+    VI right = query(rnode, mid + 1, bb, pos, val);
     return join(left, right);
 }
 
@@ -102,7 +111,7 @@ int main() {
             int pos, val;
             sc(pos, val);
             pos --;
-            std::vector<int> ans = query(0, 0, N - 1, pos, val);
+            VI ans = query(0, 0, N - 1, pos, val);
             ans.pop_back();
             int cnt = 0;
             while (!ans.empty()) {
