@@ -25,6 +25,7 @@ This template intentionally follows a **C-style approach** inside C++:
 #include <cstdio>
 #include <vector>
 
+typedef long long LL;
 typedef std::vector<int> VI;
 
 #define sc1(x) scanf("%d", &(x))
@@ -37,6 +38,8 @@ typedef std::vector<int> VI;
 #define SZ(x) ((int)(x).size())
 #define ALL(x) (x).begin(), (x).end()
 #define PB push_back
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define REP(i, n) for(int i = 0; i < (int)(n); i++)
 
 #ifdef LOCAL
@@ -144,10 +147,68 @@ const int INF = 1000000000;
 const int MOD = 1000000007;
 const int MAXN = 200005;
 
+LL totalSum;
 VI values;
 ```
 
 Avoid `snake_case` unless copying names from a problem statement or external source.
+
+---
+
+### Type Aliases
+
+Use `typedef` for type aliases instead of macros:
+
+```cpp
+typedef long long LL;
+typedef std::vector<int> VI;
+```
+
+Good:
+
+```cpp
+LL totalSum = 0;
+VI values;
+```
+
+Avoid:
+
+```cpp
+#define LL long long
+#define VI std::vector<int>
+```
+
+---
+
+### Macro Usage
+
+Use uppercase for compact macro utilities:
+
+```cpp
+SZ(values);
+ALL(values);
+MIN(a, b);
+MAX(a, b);
+REP(i, n) {
+}
+```
+
+Do not pass expressions with side effects to macros.
+
+Good:
+
+```cpp
+bestAnswer = MAX(bestAnswer, currentSum);
+minCost = MIN(minCost, cost);
+maxValue = MAX(maxValue, values[i]);
+```
+
+Bad:
+
+```cpp
+bestAnswer = MAX(bestAnswer++, currentSum);
+minCost = MIN(minCost, cost++);
+```
 
 ---
 
@@ -158,6 +219,7 @@ Avoid `snake_case` unless copying names from a problem statement or external sou
 #include <vector>
 #include <algorithm>
 
+typedef long long LL;
 typedef std::vector<int> VI;
 
 #define sc1(x) scanf("%d", &(x))
@@ -170,6 +232,8 @@ typedef std::vector<int> VI;
 #define SZ(x) ((int)(x).size())
 #define ALL(x) (x).begin(), (x).end()
 #define PB push_back
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define REP(i, n) for(int i = 0; i < (int)(n); i++)
 
 #ifdef LOCAL
@@ -188,8 +252,10 @@ int main() {
     sc(n);
 
     VI values;
+    LL totalSum = 0;
     int currentSum = 0;
     int bestAnswer = 0;
+    int minValue = 1000000000;
 
     REP(i, n) {
         int x;
@@ -197,10 +263,10 @@ int main() {
 
         values.PB(x);
         currentSum += x;
+        totalSum += x;
 
-        if (currentSum > bestAnswer) {
-            bestAnswer = currentSum;
-        }
+        bestAnswer = MAX(bestAnswer, currentSum);
+        minValue = MIN(minValue, x);
 
         debug(i, x, currentSum, bestAnswer);
     }
@@ -210,6 +276,8 @@ int main() {
     REP(i, SZ(values)) {
         printf("%d%c", values[i], i + 1 == SZ(values) ? '\n' : ' ');
     }
+
+    printf("%lld\n", totalSum);
 
     return 0;
 }
