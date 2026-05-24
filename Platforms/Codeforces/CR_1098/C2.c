@@ -64,7 +64,6 @@ void clear() {
 LL getDiff(int firstDigit, int secondDigit, int pos) {
     int delta = secondDigit - firstDigit;
     int exp = nt - 1 - pos;
-
     return ((LL)delta) * POT[exp];
 }
 
@@ -78,15 +77,12 @@ LL dp(int pos, int state) {
     }
 
     used[pos][state] = 1;
-
     LL *ans = &memo[pos][state];
     *ans = INF;
-
     int targetDigit = target[pos] - '0';
 
     REP(i, nd) {
         int currentDigit = dd[i];
-
         if (state == EQUAL) {
             if (targetDigit == currentDigit) {
                 *ans = MIN(*ans, dp(pos + 1, EQUAL));

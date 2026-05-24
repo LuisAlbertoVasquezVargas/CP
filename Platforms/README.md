@@ -22,8 +22,8 @@ This template intentionally follows a **C approach**:
 - Keeps the code compact and easy to type during contests
 
 ```c
-#include <stdio.h>
-#include <string.h>
+#include <stdio.h>  // scanf, printf, fprintf, sprintf, sscanf
+#include <string.h> // memset
 
 typedef long long LL;
 
