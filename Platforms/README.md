@@ -14,20 +14,18 @@ This repository contains solutions to various competitive programming problems a
 
 ## 🛠️ Template
 
-This template intentionally follows a **C-style approach** inside C++:
+This template intentionally follows a **C approach**:
 
-- Uses `<cstdio>` instead of `<iostream>`
-- Uses `scanf` for input
+- Uses `<stdio.h>`
+- Uses `scanf` / `printf` for input and output
 - Uses macros for short contest-style syntax
 - Keeps the code compact and easy to type during contests
 
-```cpp
-#include <cstdio>
-#include <vector>
-#include <string>
+```c
+#include <stdio.h>
+#include <string.h>
 
 typedef long long LL;
-typedef std::vector<int> VI;
 
 #define sc1(x) scanf("%d", &(x))
 #define sc2(x, y) scanf("%d%d", &(x), &(y))
@@ -36,9 +34,6 @@ typedef std::vector<int> VI;
 #define GET_SC(_1, _2, _3, _4, NAME, ...) NAME
 #define sc(...) GET_SC(__VA_ARGS__, sc4, sc3, sc2, sc1)(__VA_ARGS__)
 
-#define SZ(x) ((int)(x).size())
-#define ALL(x) (x).begin(), (x).end()
-#define PB push_back
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define REP(i, n) for(int i = 0; i < (int)(n); i++)
@@ -54,8 +49,10 @@ typedef std::vector<int> VI;
     #define debug(...)
 #endif
 
-std::string toStr(int x) { char buff[16]; sprintf(buff, "%d", x); return std::string(buff); }
-int toInt(std::string s) { int x; sscanf(s.c_str(), "%d", &x); return x; }
+void toStr(int x, char buff[16]) { sprintf(buff, "%d", x); }
+void toStrLL(LL x, char buff[32]) { sprintf(buff, "%lld", x); }
+int toInt(char s[]) { int x; sscanf(s, "%d", &x); return x; }
+LL toLL(char s[]) { LL x; sscanf(s, "%lld", &x); return x; }
 
 int main() {
     int tc;
@@ -74,142 +71,5 @@ int main() {
 ## ⚙️ Compilation
 
 ```bash
-g++ -std=c++98 -DLOCAL main.cpp
-```
-
----
-
-## 📌 Coding Standards
-
-### Spacing
-
-Use a space after real C++ control keywords:
-
-```cpp
-if (ok) {
-}
-
-for (int i = 0; i < n; i++) {
-}
-
-while (x > 0) {
-}
-```
-
-Do not use a space after template helpers or macros:
-
-```cpp
-REP(i, n) {
-}
-
-sc(n);
-debug(i, ans);
-SZ(v);
-ALL(v);
-```
-
-Preferred style:
-
-```cpp
-if (ok) {
-    REP(i, n) {
-        sc(x);
-        debug(i, x);
-    }
-}
-```
-
----
-
-### Naming
-
-Use short lowercase names for classic competitive-programming variables:
-
-```cpp
-int n, m, k, q;
-int i, j;
-int x, y;
-int l, r;
-int u, v;
-```
-
-Use `camelCase` for meaningful multi-word variables:
-
-```cpp
-int currentSum;
-int bestAnswer;
-int maxValue;
-int minCost;
-int leftBound;
-int rightBound;
-```
-
-Use uppercase for constants, macros, and type aliases:
-
-```cpp
-const int INF = 1000000000;
-const int MOD = 1000000007;
-const int MAXN = 200005;
-
-LL totalSum;
-VI values;
-```
-
-Avoid `snake_case` unless copying names from a problem statement or external source.
-
----
-
-### Type Aliases
-
-Use `typedef` for type aliases instead of macros:
-
-```cpp
-typedef long long LL;
-typedef std::vector<int> VI;
-```
-
-Good:
-
-```cpp
-LL totalSum = 0;
-VI values;
-```
-
-Avoid:
-
-```cpp
-#define LL long long
-#define VI std::vector<int>
-```
-
----
-
-### Macro Usage
-
-Use uppercase for compact macro utilities:
-
-```cpp
-SZ(values);
-ALL(values);
-MIN(a, b);
-MAX(a, b);
-REP(i, n) {
-}
-```
-
-Do not pass expressions with side effects to macros.
-
-Good:
-
-```cpp
-bestAnswer = MAX(bestAnswer, currentSum);
-minCost = MIN(minCost, cost);
-maxValue = MAX(maxValue, values[i]);
-```
-
-Bad:
-
-```cpp
-bestAnswer = MAX(bestAnswer++, currentSum);
-minCost = MIN(minCost, cost++);
+gcc -std=c99 -DLOCAL main.c
 ```
