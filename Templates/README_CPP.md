@@ -35,10 +35,9 @@ typedef vector<PII> VPII;
     void dbgVal(int x) { cerr << x; }
     void dbgVal(LL x) { cerr << x; }
     void dbgVal(char x) { cerr << x; }
-    void dbgVal(string x) { cerr << x; }
-    void dbgVal(PII x) { cerr << "(" << x.first << ", " << x.second << ")"; }
-    void dbgVal(VI v) { cerr << "["; for(int i = 0; i < (int)v.size(); i++) { if(i) cerr << " "; cerr << v[i]; } cerr << "]"; }
-
+    void dbgVal(const string &x) { cerr << x; }
+    template <class A, class B> void dbgVal(const pair<A, B> &p) { cerr << "("; dbgVal(p.first); cerr << ", "; dbgVal(p.second); cerr << ")"; }
+    template <class T> void dbgVal(const vector<T> &v) { cerr << "["; for(int i = 0; i < (int)v.size(); i++) { if(i) cerr << " "; dbgVal(v[i]); } cerr << "]"; }
     #define db1(x) cerr << "[D] " << #x << "="; dbgVal(x); cerr << '\n'
     #define db2(x, y) cerr << "[D] " << #x << "="; dbgVal(x); cerr << " | " << #y << "="; dbgVal(y); cerr << '\n'
     #define db3(x, y, z) cerr << "[D] " << #x << "="; dbgVal(x); cerr << " | " << #y << "="; dbgVal(y); cerr << " | " << #z << "="; dbgVal(z); cerr << '\n'
