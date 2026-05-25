@@ -21,6 +21,11 @@ typedef vector<PII> VPII;
 
 #define EOL '\n'
 
+#define pb push_back
+#define mp make_pair
+#define fi first
+#define se second
+
 #define sc1(x) cin >> x
 #define sc2(x, y) cin >> x >> y
 #define sc3(x, y, z) cin >> x >> y >> z
@@ -28,15 +33,12 @@ typedef vector<PII> VPII;
 #define GET_SC(_1, _2, _3, _4, NAME, ...) NAME
 #define sc(...) GET_SC(__VA_ARGS__, sc4, sc3, sc2, sc1)(__VA_ARGS__)
 
-#define pb push_back
-#define mp make_pair
-
 #ifdef LOCAL
     void dbgVal(int x) { cerr << x; }
     void dbgVal(LL x) { cerr << x; }
     void dbgVal(char x) { cerr << x; }
     void dbgVal(const string &x) { cerr << x; }
-    template <class A, class B> void dbgVal(const pair<A, B> &p) { cerr << "("; dbgVal(p.first); cerr << ", "; dbgVal(p.second); cerr << ")"; }
+    template <class A, class B> void dbgVal(const pair<A, B> &p) { cerr << "("; dbgVal(p.fi); cerr << ", "; dbgVal(p.se); cerr << ")"; }
     template <class T> void dbgVal(const vector<T> &v) { cerr << "["; for(int i = 0; i < (int)v.size(); i++) { if(i) cerr << " "; dbgVal(v[i]); } cerr << "]"; }
     #define db1(x) cerr << "[D] " << #x << "="; dbgVal(x); cerr << '\n'
     #define db2(x, y) cerr << "[D] " << #x << "="; dbgVal(x); cerr << " | " << #y << "="; dbgVal(y); cerr << '\n'
