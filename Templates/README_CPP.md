@@ -4,6 +4,7 @@
 
 ```cpp
 #include <algorithm> // sort
+#include <cstring>   // memset
 #include <iostream>  // cin, cout, cerr, ios
 #include <sstream>   // stringstream
 #include <string>    // string
@@ -43,6 +44,7 @@ typedef vector<PII> VPII;
 #define se second
 
 #define SZ(x) ((int)(x).size())
+#define CLR(a, v) memset(a, v, sizeof(a))
 #define REP(i, n) for(int i = 0; i < (int)(n); i++)
 #define FOR(i, a, b) for(int i = (a); i <= (b); i++)
 #define ALL(x) (x).begin(), (x).end()
