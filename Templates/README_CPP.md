@@ -47,6 +47,7 @@ typedef vector<PII> VPII;
 #define CLR(a, v) memset(a, v, sizeof(a))
 #define REP(i, n) for(int i = 0; i < (int)(n); i++)
 #define FOR(i, a, b) for(int i = (a); i <= (b); i++)
+#define EACH(it, v) for(__typeof__((v).begin()) it = (v).begin(); it != (v).end(); it++)
 #define ALL(x) (x).begin(), (x).end()
 
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
