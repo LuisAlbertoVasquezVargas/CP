@@ -7,7 +7,7 @@
 #include <iostream>  // cin, cout, cerr, ios
 #include <sstream>   // stringstream
 #include <string>    // string
-#include <utility>   // pair
+#include <utility>   // pair, make_pair
 #include <vector>    // vector
 using namespace std;
 
@@ -23,9 +23,22 @@ typedef vector<PII> VPII;
 #define GET_SC(_1, _2, _3, _4, NAME, ...) NAME
 #define sc(...) GET_SC(__VA_ARGS__, sc4, sc3, sc2, sc1)(__VA_ARGS__)
 
-#define PB push_back
+#ifdef LOCAL
+    #define db1(x) cerr << "[D] " << #x << "=" << x << EOL
+    #define db2(x, y) cerr << "[D] " << #x << "=" << x << " | " << #y << "=" << y << EOL
+    #define db3(x, y, z) cerr << "[D] " << #x << "=" << x << " | " << #y << "=" << y << " | " << #z << "=" << z << EOL
+    #define db4(x, y, z, w) cerr << "[D] " << #x << "=" << x << " | " << #y << "=" << y << " | " << #z << "=" << z << " | " << #w << "=" << w << EOL
+    #define GET_DB(_1, _2, _3, _4, NAME, ...) NAME
+    #define debug(...) GET_DB(__VA_ARGS__, db4, db3, db2, db1)(__VA_ARGS__)
+#else
+    #define debug(...)
+#endif
+
+#define pb push_back
+#define mp make_pair
 #define fi first
 #define se second
+#define EOL '\n'
 
 #define SZ(x) ((int)(x).size())
 #define REP(i, n) for(int i = 0; i < (int)(n); i++)
@@ -34,17 +47,6 @@ typedef vector<PII> VPII;
 
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
-
-#ifdef LOCAL
-    #define db1(x) cerr << "[D] " << #x << "=" << x << '\n'
-    #define db2(x, y) cerr << "[D] " << #x << "=" << x << " | " << #y << "=" << y << '\n'
-    #define db3(x, y, z) cerr << "[D] " << #x << "=" << x << " | " << #y << "=" << y << " | " << #z << "=" << z << '\n'
-    #define db4(x, y, z, w) cerr << "[D] " << #x << "=" << x << " | " << #y << "=" << y << " | " << #z << "=" << z << " | " << #w << "=" << w << '\n'
-    #define GET_DB(_1, _2, _3, _4, NAME, ...) NAME
-    #define debug(...) GET_DB(__VA_ARGS__, db4, db3, db2, db1)(__VA_ARGS__)
-#else
-    #define debug(...)
-#endif
 
 string toStr(int x) { stringstream ss; ss << x; return ss.str(); }
 string toStrLL(LL x) { stringstream ss; ss << x; return ss.str(); }
@@ -71,4 +73,3 @@ int main() {
 ```bash
 g++ -std=gnu++98 -DLOCAL main.cpp
 ```
-
