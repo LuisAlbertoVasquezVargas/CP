@@ -34,10 +34,7 @@ typedef vector<PII> VPII;
 #define sc(...) GET_SC(__VA_ARGS__, sc4, sc3, sc2, sc1)(__VA_ARGS__)
 
 #ifdef LOCAL
-    void dbgVal(int x) { cerr << x; }
-    void dbgVal(LL x) { cerr << x; }
-    void dbgVal(char x) { cerr << x; }
-    void dbgVal(const string &x) { cerr << x; }
+    template <class T> void dbgVal(const T &x) { cerr << x; }
     template <class A, class B> void dbgVal(const pair<A, B> &p) { cerr << "("; dbgVal(p.fi); cerr << ", "; dbgVal(p.se); cerr << ")"; }
     template <class T> void dbgVal(const vector<T> &v) { cerr << "["; for(int i = 0; i < (int)v.size(); i++) { if(i) cerr << " "; dbgVal(v[i]); } cerr << "]"; }
     #define db1(x) cerr << "[D] " << #x << "="; dbgVal(x); cerr << '\n'
