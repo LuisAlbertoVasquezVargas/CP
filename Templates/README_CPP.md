@@ -28,21 +28,26 @@ typedef vector<PII> VPII;
 #define GET_SC(_1, _2, _3, _4, NAME, ...) NAME
 #define sc(...) GET_SC(__VA_ARGS__, sc4, sc3, sc2, sc1)(__VA_ARGS__)
 
+#define pb push_back
+#define mp make_pair
+
 #ifdef LOCAL
-    #define db1(x) cerr << "[D] " << #x << "=" << x << EOL
-    #define db2(x, y) cerr << "[D] " << #x << "=" << x << " | " << #y << "=" << y << EOL
-    #define db3(x, y, z) cerr << "[D] " << #x << "=" << x << " | " << #y << "=" << y << " | " << #z << "=" << z << EOL
-    #define db4(x, y, z, w) cerr << "[D] " << #x << "=" << x << " | " << #y << "=" << y << " | " << #z << "=" << z << " | " << #w << "=" << w << EOL
+    void dbgVal(int x) { cerr << x; }
+    void dbgVal(LL x) { cerr << x; }
+    void dbgVal(char x) { cerr << x; }
+    void dbgVal(string x) { cerr << x; }
+    void dbgVal(PII x) { cerr << "(" << x.first << ", " << x.second << ")"; }
+    void dbgVal(VI v) { cerr << "["; for(int i = 0; i < (int)v.size(); i++) { if(i) cerr << " "; cerr << v[i]; } cerr << "]"; }
+
+    #define db1(x) cerr << "[D] " << #x << "="; dbgVal(x); cerr << '\n'
+    #define db2(x, y) cerr << "[D] " << #x << "="; dbgVal(x); cerr << " | " << #y << "="; dbgVal(y); cerr << '\n'
+    #define db3(x, y, z) cerr << "[D] " << #x << "="; dbgVal(x); cerr << " | " << #y << "="; dbgVal(y); cerr << " | " << #z << "="; dbgVal(z); cerr << '\n'
+    #define db4(x, y, z, w) cerr << "[D] " << #x << "="; dbgVal(x); cerr << " | " << #y << "="; dbgVal(y); cerr << " | " << #z << "="; dbgVal(z); cerr << " | " << #w << "="; dbgVal(w); cerr << '\n'
     #define GET_DB(_1, _2, _3, _4, NAME, ...) NAME
     #define debug(...) GET_DB(__VA_ARGS__, db4, db3, db2, db1)(__VA_ARGS__)
 #else
     #define debug(...)
 #endif
-
-#define pb push_back
-#define mp make_pair
-#define fi first
-#define se second
 
 #define SZ(x) ((int)(x).size())
 #define CLR(a, v) memset(a, v, sizeof(a))
@@ -79,3 +84,4 @@ int main() {
 ```bash
 g++ -std=gnu++98 -DLOCAL main.cpp
 ```
+
