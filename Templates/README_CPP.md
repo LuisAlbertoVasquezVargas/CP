@@ -15,6 +15,7 @@ using namespace std;
 typedef long long LL;
 typedef vector<int> VI;
 typedef vector<VI> VVI;
+typedef vector<string> VS;
 typedef pair<int, int> PII;
 typedef vector<PII> VPII;
 
@@ -78,4 +79,3 @@ int main() {
 ```bash
 g++ -std=gnu++98 -DLOCAL main.cpp
 ```
-
