@@ -4,8 +4,11 @@
 
 ```cpp
 #include <iostream>
+#include <string>
 
 using namespace std;
+
+typedef long long LL;
 
 #define sc1(x) cin >> x
 #define sc2(x, y) cin >> x >> y
@@ -20,87 +23,18 @@ int main() {
     cin.tie(NULL);
 
     int n;
-    sc(n);
+    LL x;
+    string s;
 
-    int a, b;
-    sc(a, b);
+    sc(n, x, s);
 
     return 0;
 }
 ```
 
----
-
-## Notes
-
-This template starts from a minimal C++98/C++03-compatible style.
-
-The target local compiler mode is:
+## Compilation
 
 ```bash
 g++ -std=gnu++98 -DLOCAL main.cpp
 ```
-
-The template uses C++ input/output:
-
-```cpp
-cin >> x;
-cout << x << '\n';
-```
-
-The `sc(...)` macro supports up to 4 input variables:
-
-```cpp
-sc(n);
-sc(a, b);
-sc(x, y, z);
-sc(a, b, c, d);
-```
-
-It expands to:
-
-```cpp
-cin >> n;
-cin >> a >> b;
-cin >> x >> y >> z;
-cin >> a >> b >> c >> d;
-```
-
-Once `ios::sync_with_stdio(false)` is used, avoid mixing C++ I/O with C I/O.
-
-Use:
-
-```cpp
-cin
-cout
-```
-
-Avoid mixing with:
-
-```cpp
-scanf
-printf
-```
-
-The name `sc` is kept to match the C template style.
-
-The line:
-
-```cpp
-using namespace std;
-```
-
-is used because most standard C++ tools live inside the `std` namespace, such as:
-
-```cpp
-cin
-cout
-vector
-string
-sort
-```
-
-In competitive programming, this keeps single-file solutions shorter.
-
-The variadic macro trick used by `sc(...)` is supported by `g++ -std=gnu++98`, even though variadic macros are not part of strict C++98.
 
