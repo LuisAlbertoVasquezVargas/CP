@@ -13,8 +13,11 @@ using namespace std;
 
 typedef long long LL;
 typedef vector<int> VI;
+typedef vector<VI> VVI;
 typedef pair<int, int> PII;
 typedef vector<PII> VPII;
+
+#define EOL '\n'
 
 #define sc1(x) cin >> x
 #define sc2(x, y) cin >> x >> y
@@ -38,7 +41,6 @@ typedef vector<PII> VPII;
 #define mp make_pair
 #define fi first
 #define se second
-#define EOL '\n'
 
 #define SZ(x) ((int)(x).size())
 #define REP(i, n) for(int i = 0; i < (int)(n); i++)
@@ -73,3 +75,4 @@ int main() {
 ```bash
 g++ -std=gnu++98 -DLOCAL main.cpp
 ```
+
