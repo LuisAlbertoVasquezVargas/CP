@@ -7,11 +7,14 @@
 #include <iostream>  // cin, cout, cerr, ios
 #include <sstream>   // stringstream
 #include <string>    // string
+#include <utility>   // pair
 #include <vector>    // vector
 using namespace std;
 
 typedef long long LL;
 typedef vector<int> VI;
+typedef pair<int, int> PII;
+typedef vector<PII> VPII;
 
 #define sc1(x) cin >> x
 #define sc2(x, y) cin >> x >> y
@@ -19,6 +22,10 @@ typedef vector<int> VI;
 #define sc4(x, y, z, w) cin >> x >> y >> z >> w
 #define GET_SC(_1, _2, _3, _4, NAME, ...) NAME
 #define sc(...) GET_SC(__VA_ARGS__, sc4, sc3, sc2, sc1)(__VA_ARGS__)
+
+#define PB push_back
+#define fi first
+#define se second
 
 #define SZ(x) ((int)(x).size())
 #define REP(i, n) for(int i = 0; i < (int)(n); i++)
