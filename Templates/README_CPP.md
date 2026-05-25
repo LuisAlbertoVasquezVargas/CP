@@ -3,6 +3,7 @@
 # C++ Competitive Programming Template
 
 ```cpp
+#include <algorithm> // sort
 #include <iostream>  // cin, cout, cerr, ios
 #include <sstream>   // stringstream
 #include <string>    // string
@@ -21,6 +22,8 @@ typedef vector<int> VI;
 
 #define SZ(x) ((int)(x).size())
 #define REP(i, n) for(int i = 0; i < (int)(n); i++)
+#define FOR(i, a, b) for(int i = (a); i <= (b); i++)
+#define ALL(x) (x).begin(), (x).end()
 
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
