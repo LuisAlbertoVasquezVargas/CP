@@ -1,30 +1,6 @@
-<!-- Templates/README_C.md -->
-
-# Competitive Programming
-
-This repository contains solutions to various competitive programming problems and contests, primarily focused on **Codeforces**.
-
----
-
-## 🏆 Platforms / Contests
-
-- **Codeforces**
-
----
-
-## 🛠️ Template
-
-This template intentionally follows a **C approach**:
-
-- Uses standard C headers: `<stdio.h>`, `<string.h>`, and `<stdbool.h>`
-- Uses `scanf` / `printf` and compact contest macros
-- Uses `enum` for compile-time constants
-- Keeps the code short and easy to type during contests
-
-```c
-#include <stdio.h>   // scanf, printf, fprintf, sprintf, sscanf
-#include <string.h>  // memset
-#include <stdbool.h> // bool, true, false
+#include <stdio.h>  // scanf, printf, fprintf, sprintf, sscanf
+#include <string.h> // memset
+#include <stdbool.h> // bool
 
 typedef long long LL;
 
@@ -61,27 +37,58 @@ enum {
     INF = 2111222333
 };
 
+int A[MAX_N + 2];
+int n;
+
+bool sorted() {
+    FOR(i, 1, n) {
+        if (A[i - 1] > A[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+void solve() {
+    int lo = 1;
+    FOR(i, 1, n) {
+        int dx = A[i] - A[i - 1];
+        int n_dx = A[i + 1] - A[i];
+        if (dx < 0 && n_dx < 0) {
+            debug(i);
+            puts("NO");
+            return;
+        }
+        if (dx >= 0) {
+            continue;
+        }
+        lo = MAX(lo, -dx);
+    }
+    debug(lo);
+    FOR(i, 1, n) {
+        int dx = A[i] - A[i - 1];
+        if (dx < 0) {
+            A[i] += lo;
+        }
+        debug(A[i]);
+    }
+
+    puts(sorted() ? "YES" : "NO");
+}
+
 int main() {
     int tc;
     sc(tc);
 
     REP(t, tc) {
-
+        sc(n);
+        FOR(i, 1, n) {
+            sc(A[i]);
+        }
+        A[n + 1] = INF;
+        solve();
     }
 
     return 0;
 }
-````
-
----
-
-## ⚙️ Compilation
-
-```bash
-gcc -std=gnu11 -DLOCAL B.c
-```
-
-```bash
-./a.out < B.in
-```
 
