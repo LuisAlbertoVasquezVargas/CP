@@ -1,6 +1,8 @@
-<!-- Templates/README_C.md -->
+<!-- Templates/C/README.md -->
 
-# Competitive Programming
+# C Competitive Programming Template
+
+For an explanation of each template decision, see [notes.md](notes.md).
 
 This repository contains solutions to various competitive programming problems and contests, primarily focused on **Codeforces**.
 
@@ -71,7 +73,7 @@ int main() {
 
     return 0;
 }
-````
+```
 
 ---
 

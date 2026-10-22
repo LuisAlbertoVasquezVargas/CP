@@ -1,6 +1,8 @@
-<!-- Templates/README_CPP.md -->
+<!-- Templates/CPP/README.md -->
 
 # C++ Competitive Programming Template
+
+For an explanation of each template decision, see [notes.md](notes.md).
 
 ```cpp
 #include <algorithm> // sort
